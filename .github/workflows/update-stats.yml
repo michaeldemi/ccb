@@ -8,6 +8,8 @@ on:
 jobs:
   update-stats:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write  # Allows pushing commits
     
     steps:
     - name: Checkout repository
@@ -39,11 +41,4 @@ jobs:
         git remote set-url origin https://${{ secrets.GH_PAT }}@github.com/michaeldemi/ccb.git
         git push
       env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Optional, for other steps if needed
-
-    - name: Trigger Make.com webhook
-      run: |
-        # Replace YOUR_MAKE_WEBHOOK_URL with your actual Make.com webhook URL
-        curl -X POST https://hook.eu1.make.com/YOUR_MAKE_WEBHOOK_URL \
-          -H "Content-Type: application/json" \
-          -d '{"message": "New crime stats screenshots ready", "date": "'$(date +'%Y-%m-%d')'"}'
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
