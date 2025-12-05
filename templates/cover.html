@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cover Card - Canada Crime Brief</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Inter for clean, modern look -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&display=swap" rel="stylesheet">
+    <!-- Phosphor Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #1e293b; /* Slate 800 for the editor background */
+            margin: 0;
+            overflow: hidden; /* Hide scrollbars during scale */
+            height: 100vh;
+            width: 100vw;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* The actual graphic container */
+        #story-card {
+            width: 1080px;
+            height: 1920px;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            position: relative;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            flex-shrink: 0;
+            transform-origin: center center;
+            /* Will be scaled via JS */
+        }
+
+        /* Decorative background mesh */
+        .bg-mesh {
+            background-image: 
+                radial-gradient(at 0% 0%, hsla(253,16%,7%,1) 0, transparent 50%), 
+                radial-gradient(at 50% 0%, hsla(225,39%,30%,1) 0, transparent 50%), 
+                radial-gradient(at 100% 0%, hsla(339,49%,30%,1) 0, transparent 50%);
+            position: absolute;
+            inset: 0;
+            opacity: 0.4;
+            pointer-events: none;
+        }
+
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 40px;
+        }
+
+        /* Scanline effect for modern tech feel */
+        .scanlines {
+            background: linear-gradient(to bottom, rgba(255,255,255,0), rgba(255,255,255,0) 50%, rgba(0,0,0,0.2) 50%, rgba(0,0,0,0.2));
+            background-size: 100% 4px;
+            position: absolute;
+            inset: 0;
+            opacity: 0.1;
+            pointer-events: none;
+            z-index: 5;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- The 1080x1920 Canvas -->
+    <div id="story-card" class="flex flex-col text-white overflow-hidden">
+        
+        <!-- Background Effects -->
+        <div class="bg-mesh"></div>
+        <div class="scanlines"></div>
+
+        <!-- Decorative Blobs (Neutral Blue/Red mix for 'General' feel) -->
+        <div class="absolute -top-[300px] -right-[300px] w-[900px] h-[900px] bg-blue-600 rounded-full blur-[150px] opacity-20"></div>
+        <div class="absolute top-[40%] -left-[300px] w-[800px] h-[800px] bg-red-600 rounded-full blur-[150px] opacity-15"></div>
+
+        <!-- Header Section (Brand Label) -->
+        <div class="relative z-10 w-full p-16 pt-64 flex flex-col items-center text-center">
+            <div class="flex items-center gap-4 mb-4">
+                <!-- User provided SVG logo -->
+                <svg width="250" height="250" id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 170.6 170.59">
+                  <defs>
+                    <style>
+                      .cls-1 {
+                        fill: #ed2e24;
+                      }
+
+                      .cls-2 {
+                        fill: #fff;
+                        font-family: Poppins-ExtraBold, Poppins;
+                        font-size: 23.61px;
+                        font-weight: 700;
+                      }
+                    </style>
+                  </defs>
+                  <g id="Layer_1-2" data-name="Layer 1">
+                    <g>
+                      <text class="cls-2" transform="translate(91.77 140.08) rotate(179.52)"><tspan x="0" y="0">•</tspan></text>
+                      <text class="cls-2" transform="translate(78.92 139.82) rotate(-171.01)"><tspan x="0" y="0"> </tspan></text>
+                      <text class="cls-2" transform="translate(73.74 139.67) rotate(-158.68)"><tspan x="0" y="0">C</tspan></text>
+                      <text class="cls-2" transform="translate(57.42 133.35) rotate(-140.68)"><tspan x="0" y="0">A</tspan></text>
+                      <text class="cls-2" transform="translate(43.37 121.8) rotate(-121.73)"><tspan x="0" y="0">N</tspan></text>
+                      <text class="cls-2" transform="translate(33.76 106.1) rotate(-102.66)"><tspan x="0" y="0">A</tspan></text>
+                      <text class="cls-2" transform="translate(29.85 88.34) rotate(-84.2)"><tspan x="0" y="0">D</tspan></text>
+                      <text class="cls-2" transform="translate(31.48 71.44) rotate(-66.24)"><tspan x="0" y="0">A</tspan></text>
+                      <text class="cls-2" transform="translate(39.55 54.99) rotate(-54.09)"><tspan x="0" y="0"> </tspan></text>
+                      <text class="cls-2" transform="translate(42.36 50.66) rotate(-44.77)"><tspan x="0" y="0">•</tspan></text>
+                      <text class="cls-2" transform="translate(51.74 41.87) rotate(-35.38)"><tspan x="0" y="0"> </tspan></text>
+                      <text class="cls-2" transform="translate(55.56 38.36) rotate(-23.01)"><tspan x="0" y="0">C</tspan></text>
+                      <text class="cls-2" transform="translate(72.54 31.44) rotate(-5.28)"><tspan x="0" y="0">R</tspan></text>
+                      <text class="cls-2" transform="translate(88.84 30.47) rotate(7.47)"><tspan x="0" y="0">I</tspan></text>
+                      <text class="cls-2" transform="translate(97.1 30.63) rotate(23.65)"><tspan x="0" y="0">M</tspan></text>
+                      <text class="cls-2" transform="translate(117.57 40.55) rotate(42.49)"><tspan x="0" y="0">E</tspan></text>
+                      <text class="cls-2" transform="translate(127.27 49.99) rotate(52.21)"><tspan x="0" y="0"> </tspan></text>
+                      <text class="cls-2" transform="translate(130.64 53.89) rotate(61.66)"><tspan x="0" y="0">•</tspan></text>
+                      <text class="cls-2" transform="translate(136.41 65.38) rotate(71.16)"><tspan x="0" y="0"> </tspan></text>
+                      <text class="cls-2" transform="translate(138.53 70.04) rotate(82.35)"><tspan x="0" y="0">B</tspan></text>
+                      <text class="cls-2" transform="translate(140.65 86.55) rotate(99.36)"><tspan x="0" y="0">R</tspan></text>
+                      <text class="cls-2" transform="translate(137.46 102.54) rotate(112.14)"><tspan x="0" y="0">I</tspan></text>
+                      <text class="cls-2" transform="translate(134.54 110.22) rotate(123.58)"><tspan x="0" y="0">E</tspan></text>
+                      <text class="cls-2" transform="translate(126.8 121.7) rotate(138.04)"><tspan x="0" y="0">F</tspan></text>
+                      <text class="cls-2" transform="translate(116.68 130.86) rotate(153.03)"><tspan x="0" y="0">S</tspan></text>
+                      <path class="cls-1" d="M129.57,74.06l-11.91.61c-1.67-1.29.49-7.05-2.14-6.72-1.83.23-12.43,8.59-14.35,8.86-1.55.22-2.22-.9-2.29-2.29l3.97-25.65c-.78-1.01-7.34,3.73-9.01,3.51l-8.7-14.05c-1.81,1.37-7.67,13.75-8.7,14.05-1.26.37-8.28-4.4-8.7-3.51l3.97,26.57c-1.45,1.7-1.96,1.5-3.82.76-1.72-.69-13.07-8.95-13.9-8.09-.59,1.38.21,6.08-1.07,6.57l-12.37-.46c-.7.86,7.62,10.27,7.64,11.3.02,1.38-5.26,3.33-4.89,4.58l24.43,12.83c-.13.97-5.67,8.83-4.73,9.32l20.92-3.97-1.22,22.45c1.65,2.23,3.89,2.05,5.19-.31l-.92-21.99,20.31,3.82c.27-.25.46-.34.46-.76,0-.71-5.23-7.56-4.89-8.86l24.43-12.83c-.87-1.2-5.02-3.06-4.89-4.58.08-.91,7.6-9.74,7.64-10.38.02-.43.13-.84-.46-.76Z"/>
+                    </g>
+                  </g>
+                </svg>
+            </div>
+        </div>
+
+        <!-- Main Content (Centered) -->
+        <div class="relative z-10 flex-1 flex flex-col items-center justify-center -mt-20">
+            
+            <!-- Main Title -->
+            <div class="flex flex-col items-center text-center gap-2 mb-12">
+                <!-- Updated line height to 0.8 (tightened by 20%) -->
+                <h1 class="text-[200px] leading-[0.8] font-black tracking-tighter text-white drop-shadow-2xl">
+                    WEEKLY
+                </h1>
+                <h1 class="text-[200px] leading-[0.8] font-black tracking-tighter text-red-500 drop-shadow-2xl">
+                    CRIME
+                </h1>
+                <h1 class="text-[200px] leading-[0.8] font-black tracking-tighter text-white drop-shadow-2xl">
+                    UPDATE
+                </h1>
+            </div>
+
+
+            <!-- Region & Date (Mid-sized) -->
+            <div class="px-16 py-10 flex flex-col items-center gap-4 text-center border-white/10">
+                <div id="cover-region" class="text-6xl font-bold text-white tracking-wide">
+                    York Region
+                </div>
+                
+                <!-- Narrow thin horizontal line -->
+                <div class="w-24 h-[1px] bg-white/30 my-2"></div>
+
+                <div class="text-4xl text-slate-400 font-semibold tracking-wide">
+                    Week of <span id="week-range" class="text-white">Dec 01 - Dec 07</span>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Footer / Branding Area -->
+        <div class="relative z-10 w-full p-16 pb-80 text-center">
+            <div id="cover-handle" class="text-4xl text-slate-400 font-bold mb-8 tracking-wider">@CanadaCrimeBrief</div>
+            <div class="border-t border-slate-700 w-full mb-8"></div>
+            <p class="text-3xl text-slate-500 font-medium">
+                Data: <span id="data-source">Local Police Reports</span>
+            </p>
+        </div>
+
+    </div>
+
+    <script>
+        // Scaling Logic to fit the 1080x1920 card in the viewport
+        function scaleCard() {
+            const card = document.getElementById('story-card');
+            const windowWidth = window.innerWidth;
+            const windowHeight = window.innerHeight;
+            const padding = 40; // Space for UI
+
+            // Calculate scale
+            const scaleX = (windowWidth - padding) / 1080;
+            const scaleY = (windowHeight - padding) / 1920;
+            const scale = Math.min(scaleX, scaleY) * 0.95; // 0.95 for a bit of breathing room
+
+            card.style.transform = `scale(${scale})`;
+        }
+
+        window.addEventListener('resize', scaleCard);
+        // Initial scale
+        scaleCard();
+    </script>
+</body>
+</html>
