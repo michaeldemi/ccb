@@ -37,3 +37,10 @@ jobs:
         git add templates/ screenshots/
         git commit -m "Update crime stats and screenshots for $(date +'%Y-%m-%d')" || echo "No changes to commit"
         git push
+        
+    - name: Trigger Make.com webhook
+      run: |
+        # Replace YOUR_MAKE_WEBHOOK_URL with your actual Make.com webhook URL
+        curl -X POST https://hook.eu1.make.com/YOUR_MAKE_WEBHOOK_URL \
+          -H "Content-Type: application/json" \
+          -d '{"message": "New crime stats screenshots ready", "date": "'$(date +'%Y-%m-%d')'"}'
