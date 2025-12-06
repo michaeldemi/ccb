@@ -1,16 +1,22 @@
 import requests
 from datetime import datetime, timedelta, timezone
+from zoneinfo import ZoneInfo
 
 API_URL = "https://services8.arcgis.com/lYI034SQcOoxRCR7/arcgis/rest/services/Occurrence/FeatureServer/0/query"
-YORK_REGION_MUNICIPALITIES = ['Markham','Vaughan','Richmond Hill','Newmarket','Aurora','East Gwillimbury','Georgina','King','Whitchurch-Stouffville']
-DATA_SOURCE_TEXT = "Source: York Regional Police"
+YORK_REGION_MUNICIPALITIES = [
+    'Markham','Vaughan','Richmond Hill','Newmarket','Aurora',
+    'East Gwillimbury','Georgina','King','Whitchurch-Stouffville'
+]
+
+DATA_SOURCE_TEXT = "Source: York Regional Police Occurrence API (ArcGIS)"
+LOCAL_TZ = ZoneInfo("America/Toronto")
 
 def fetch_time_window(start_ms: int, end_ms: int, out_fields: str, order: str = 'rep_date DESC'):
     features, offset, page = [], 0, 2000
     while True:
         r = requests.post(API_URL, data={
             'where': '1=1',
-            'time': f'{start_ms},{end_ms}',         # CRITICAL: server-side time filter
+            'time': f'{start_ms},{end_ms}',
             'outFields': out_fields,
             'returnGeometry': 'false',
             'orderByFields': order,
@@ -46,3 +52,8 @@ def bounds(period="rolling7", weeks_back=0):
     else:
         raise ValueError(period)
     return start_dt, end_dt, int(start_dt.timestamp()*1000), int(end_dt.timestamp()*1000)
+
+def format_range_local(start_dt_utc, end_dt_utc):
+    s = start_dt_utc.astimezone(LOCAL_TZ)
+    e = end_dt_utc.astimezone(LOCAL_TZ)
+    return s.strftime('%b %d'), e.strftime('%b %d')
