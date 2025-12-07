@@ -1,4 +1,12 @@
 import os
+import sys
+from pathlib import Path
+
+# Add repository root to sys.path so stats package resolves when running as a script.
+ROOT_DIR = Path(__file__).resolve().parents[1]
+if str(ROOT_DIR) not in sys.path:
+    sys.path.insert(0, str(ROOT_DIR))
+
 from stats.auto_theft import run as run_auto
 from stats.break_enter import run as run_be
 from stats.assaults import run as run_assaults
