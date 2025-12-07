@@ -31,7 +31,7 @@ jobs:
           python -m playwright install-deps
 
       - name: Update all templates from API
-        run: python bin/update_all_stats.py
+        run: PYTHONPATH=. python bin/update_all_stats.py
 
       - name: Generate screenshots
         run: python screenshot.py
